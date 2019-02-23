@@ -13,6 +13,8 @@
     float:right;
 }
 
-/* th {
-    box-shadow: 10px 10px grey;
-} */
+#employee-table th,
+td {
+  display: inline-block;
+  width: 16.575%;
+}
