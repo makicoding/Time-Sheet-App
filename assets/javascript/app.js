@@ -1,5 +1,7 @@
-function timeSheetApp(){
+$(document).ready =()=>{
 
+
+    
 
 
   // Initialize Firebase
@@ -27,24 +29,26 @@ function timeSheetApp(){
 
     // Capture Button Click
     $("#add-user").on("click", function(event) {
-    event.preventDefault();
+      event.preventDefault();
+      console.log("working!")
 
-    // Grabbed values from text boxes
-    name = $("#name-input").val().trim();
-    role = $("#email-input").val().trim();
-    startDate = $("#age-input").val().trim();
-    monthsWorked = $("#comment-input").val().trim();
-    monthlyRate = $('#').val().trim();
-    totalBilled = $('#')
+      // Grabbed values from text boxes
+      name = $("#name-input").val().trim();
+      role = $("#role-input").val().trim();
+      startDate = $("#startdate-input").val().trim();
+      monthsWorked = $("#months-input").val().trim();
+      monthlyRate = $('#rate-input').val().trim();
+      totalBilled = monthsWorked * monthlyRate;
 
-    // Code for handling the push
-    database.ref().push({
-        name: name,
-        email: email,
-        age: age,
-        comment: comment,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-    });
+      // Code for handling the push
+      database.ref().push({
+          name: name,
+          role: role,
+          startDate: startDate,
+          monthsWorked: monthlyRate,
+          totalBilled: totalBilled,
+          dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
 
     });
 
@@ -61,16 +65,18 @@ function timeSheetApp(){
 
     // Change the HTML to reflect
     $("#name-display").text(sv.name);
-    $("#email-display").text(sv.email);
-    $("#age-display").text(sv.age);
-    $("#comment-display").text(sv.comment);
+    $("#role-display").text(sv.role);
+    $("#startdate-display").text(sv.startDate);
+    $("#months-display").text(sv.monthsWorked);
+    $('#totalbilled').text(sv.totalBilled)
 
     // Handle the errors
     }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
     });
-  
+    
+    
 
 
 
-}
+  }
